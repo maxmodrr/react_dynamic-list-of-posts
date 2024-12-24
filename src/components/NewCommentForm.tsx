@@ -45,6 +45,7 @@ export const NewCommentForm: React.FC<Props> = ({ postId, onAddComment }) => {
       onAddComment(res);
       setBody('');
     } catch {
+      throw new Error('Unable to add a comment');
     } finally {
       setIsLoading(false);
     }

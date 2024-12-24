@@ -36,7 +36,11 @@ export const PostDetails: React.FC<Props> = ({ post }) => {
 
   const handleDeleteComment = async (com: Comment) => {
     setComments(prev => prev.filter(e => e.id !== com.id));
-    deleteComment(com);
+    try {
+      await deleteComment(com);
+    } catch {
+      setIsError(true);
+    }
   };
 
   return (
